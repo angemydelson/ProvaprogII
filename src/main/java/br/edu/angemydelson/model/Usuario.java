@@ -1,5 +1,5 @@
 package br.edu.angemydelson.model;
-import org.apache.commons.codec.digest.DigestUtils;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,5 @@
 package br.edu.angemydelson.controller;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class UsuarioController {
 
     public void register() throws Exception {
         try {
+        	byte[] hash1 = DigestUtils.sha256("novoUsuario.getSenha()"); 
+        	novoUsuario.getSenha(hash1);
             usuarioDAO.save(novoUsuario);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
             facesContext.addMessage(null, m);
