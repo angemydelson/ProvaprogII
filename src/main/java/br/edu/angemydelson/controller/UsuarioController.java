@@ -1,6 +1,7 @@
 package br.edu.angemydelson.controller;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -40,8 +41,9 @@ public class UsuarioController {
 
     public void register() throws Exception {
         try {
-        	byte[] hash1 = DigestUtils.sha256("novoUsuario.getSenha()"); 
-        	novoUsuario.getSenha(hash1);
+        	byte[] hash1 = DigestUtils.sha256(novoUsuario.getSenha());
+        	String senhaC = new String(hash1, StandardCharsets.UTF_8);
+        	novoUsuario.setSenha(senhaC);
             usuarioDAO.save(novoUsuario);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
             facesContext.addMessage(null, m);

@@ -36,7 +36,7 @@ public class Usuario {
     
     @NotEmpty
     @NotNull
-    @Size(min = 3, max = 30)
+//    @Size(min = 3, max = 30)
     private String senha;
     // byte[] hash1 = DigestUtils.sha256("senha"); 
     
